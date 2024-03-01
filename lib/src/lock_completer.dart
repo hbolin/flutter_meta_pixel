@@ -7,10 +7,10 @@ class LockCompleter {
     required Future<void> Function() action,
   }) async {
     try {
-      _completer = Completer<void>();
+      _completer ??= Completer<void>();
       await action();
     } finally {
-      _completer!.complete();
+      _completer?.complete();
       _completer = null;
     }
   }
